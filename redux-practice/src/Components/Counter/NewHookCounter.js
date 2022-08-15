@@ -1,21 +1,30 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { decrement, increment } from '../../redux/counter/action';
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from '../../redux/NewCounter/action';
 
-const Counter = ({count, increment, decrement}) => {
+const NewHookCounter = () => {
+    const count = useSelector((state)=>state.newCounter.value);
+    const dispatch = useDispatch();
+
+    const incrementHandeler = (value) =>{
+        dispatch(increment(value))
+    }
+    const decrementHandeler = (value) =>{
+        dispatch(decrement(value))
+    }
     return (
         <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
             <div className="text-2xl font-semibold">{count}</div>
             <div className="flex space-x-3">
                 <button
                     className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-                    onClick={increment}
+                    onClick={()=>incrementHandeler(10)}
                 >
                     Increment
                 </button>
                 <button
                     className="bg-red-400 text-white px-3 py-2 rounded shadow"
-                    onClick={decrement}
+                    onClick={()=>decrementHandeler(5)}
                 >
                     Decrement
                 </button>
@@ -24,18 +33,6 @@ const Counter = ({count, increment, decrement}) => {
     );
 };
 
-const mapStateToProps = (state, ownProps) =>{
-    console.log(ownProps);
-    return{
-        count: state.oldCounter.value,
-    }
-};
 
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        increment: (value)=> dispatch(increment(value)),
-        decrement : (value)=> dispatch(decrement(value)),
-    }
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default NewHookCounter;
