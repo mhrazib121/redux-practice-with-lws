@@ -35,6 +35,12 @@
       "password": "$2a$10$iJDOYZQvNglifzYaGLmB5OJBZgAakaeG0gxnQfNTKXX/F01AICvGO",
       "name": "Test",
       "id": 6
+    },
+    {
+      "email": "razib123@gmail.com",
+      "password": "$2a$10$LOWrpCU0d.V.Y/29kPRKMulVDoT6O8sa58fD14YDFUmG2qEh6Pe6O",
+      "name": "Razib",
+      "id": 7
     }
   ],
   "conversations": [
